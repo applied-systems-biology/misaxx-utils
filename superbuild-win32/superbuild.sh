@@ -63,7 +63,7 @@ function standard_cmake_build {
 function download_if_not_exist {
     if [ ! -e $2 ]; then
 		if [ ! -e $2.zip ]; then
-			wget -O $2.zip $1 || { echo 'Download of $1 failed' ; exit; }
+			wget -O $2.zip $1 || { echo "Download of $1 failed" ; exit; }
         fi
         unzip $2.zip || { echo "Extracting $2.zip failed" ; exit; }
     fi
