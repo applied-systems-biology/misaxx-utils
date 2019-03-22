@@ -131,6 +131,9 @@ pushd lemon-1.3.1/build
 	make install
 popd
 
+# Fix needed for libraries depending on LEMON
+cp /mingw64/lib/liblemon.a /mingw64/lib/lemon.lib
+
 #
 # Build MISA++ Tissue segmentation, Glomeruli segmentation
 #
