@@ -124,7 +124,12 @@ standard_cmake_build opencv-toolbox
 #
 
 download_if_not_exist $LEMON_SOURCES lemon-1.3.1
-standard_cmake_build lemon-1.3.1
+mkdir -p lemon-1.3.1/build
+pushd lemon-1.3.1/build
+	cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=/mingw64/ -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
+	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
+	make install
+popd
 
 #
 # Build MISA++ Tissue segmentation, Glomeruli segmentation
