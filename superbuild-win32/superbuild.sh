@@ -20,7 +20,7 @@ NLOHMANN_JSON_SOURCES="https://github.com/nlohmann/json/archive/v3.6.1.zip"
 OPENCV_TOOLBOX_SOURCES="https://asb-git.hki-jena.de/RGerst/opencv-toolbox.git"
 
 # LEMON Graph library sources
-LEMON_SOURCES="https://asb-git.hki-jena.de/RGerst/opencv-toolbox.git"
+LEMON_SOURCES="http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.zip"
 
 # OME sources
 OME_COMMON_SOURCES="https://downloads.openmicroscopy.org/ome-common-cpp/5.5.0/source/ome-common-cpp-5.5.0.zip"
