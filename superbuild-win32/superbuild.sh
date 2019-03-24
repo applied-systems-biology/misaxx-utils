@@ -36,6 +36,7 @@ NUM_THREADS=1
 #
 
 pacman -S --noconfirm --needed unzip mingw-w64-x86_64-cmake \
+wget \
 mingw-w64-x86_64-toolchain \
 mingw-w64-x86_64-boost \
 mingw-w64-x86_64-make \
