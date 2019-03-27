@@ -63,8 +63,8 @@ mingw-w64-$MSYS2_PLATFORM-python2
 cp /mingw64/bin/mingw32-make /mingw64/bin/make
 
 function dependency_cmake_build {
-	mkdir -p $1/build-$DEPENDENCY_CMAKE_BUILD_TYPE
-	pushd $1/build-$DEPENDENCY_CMAKE_BUILD_TYPE
+	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
+	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	cmake -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
 	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
 	make install
