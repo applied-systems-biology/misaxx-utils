@@ -27,31 +27,37 @@ OME_COMMON_SOURCES="https://downloads.openmicroscopy.org/ome-common-cpp/5.5.0/so
 OME_MODEL_SOURCES="https://downloads.openmicroscopy.org/ome-model/5.6.0/source/ome-model-5.6.0.zip"
 OME_FILES_SOURCES="https://downloads.openmicroscopy.org/ome-files-cpp/0.5.0/source/ome-files-cpp-0.5.0.zip"
 
+# MSYS2 platform settings
+MSYS2_PLATFORM=x86_64
+
 # Number of threads for make
 NUM_THREADS=4
 
 # CMake build types
+BUILD_PLATFORM=$MSYS2_PLATFORM
 DEPENDENCY_CMAKE_BUILD_TYPE=Release
-MISAXX_CMAKE_BUILD_TYPE=Debug
+MISAXX_CMAKE_BUILD_TYPE=Release
 
+# Installation prefix
+INSTALL_PREFIX=/mingw64/
 
 #
 # Install dependencies 
 #
 
-pacman -S --noconfirm --needed unzip mingw-w64-x86_64-cmake \
+pacman -S --noconfirm --needed unzip mingw-w64-$MSYS2_PLATFORM-cmake \
 wget \
-mingw-w64-x86_64-toolchain \
-mingw-w64-x86_64-boost \
-mingw-w64-x86_64-make \
+mingw-w64-$MSYS2_PLATFORM-toolchain \
+mingw-w64-$MSYS2_PLATFORM-boost \
+mingw-w64-$MSYS2_PLATFORM-make \
 libsqlite \
 libsqlite-devel \
-mingw-w64-x86_64-opencv \
-mingw-w64-x86_64-libtiff \
-mingw-w64-x86_64-xerces-c \
-mingw-w64-x86_64-xalan-c \
-mingw-w64-x86_64-libpng \
-mingw-w64-x86_64-python2
+mingw-w64-$MSYS2_PLATFORM-opencv \
+mingw-w64-$MSYS2_PLATFORM-libtiff \
+mingw-w64-$MSYS2_PLATFORM-xerces-c \
+mingw-w64-$MSYS2_PLATFORM-xalan-c \
+mingw-w64-$MSYS2_PLATFORM-libpng \
+mingw-w64-$MSYS2_PLATFORM-python2
 
 # Make compiling easier
 cp /mingw64/bin/mingw32-make /mingw64/bin/make
@@ -59,16 +65,16 @@ cp /mingw64/bin/mingw32-make /mingw64/bin/make
 function dependency_cmake_build {
 	mkdir -p $1/build-$DEPENDENCY_CMAKE_BUILD_TYPE
 	pushd $1/build-$DEPENDENCY_CMAKE_BUILD_TYPE
-	cmake -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=/mingw64/ -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
+	cmake -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
 	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
 	make install
 	popd
 }
 
 function misaxx_cmake_build {
-	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE
-	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE
-	cmake -DCMAKE_BUILD_TYPE=$MISAXX_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=/mingw64/ -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
+	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
+	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
+	cmake -DCMAKE_BUILD_TYPE=$MISAXX_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
 	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
 	make install
 	popd
@@ -138,15 +144,15 @@ misaxx_cmake_build opencv-toolbox
 #
 
 download_if_not_exist $LEMON_SOURCES lemon-1.3.1
-mkdir -p lemon-1.3.1/build
-pushd lemon-1.3.1/build
-	cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=/mingw64/ -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
+mkdir -p lemon-1.3.1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
+pushd lemon-1.3.1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
+	cmake -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
 	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
 	make install
 popd
 
 # Fix needed for libraries depending on LEMON
-cp /mingw64/lib/liblemon.a /mingw64/lib/lemon.lib
+cp $INSTALL_PREFIX/lib/liblemon.a $INSTALL_PREFIX/lib/lemon.lib
 
 #
 # Build MISA++ Tissue segmentation, Glomeruli segmentation
