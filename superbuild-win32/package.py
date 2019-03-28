@@ -8,6 +8,11 @@ applications = [
 ]
 package_path = "./package-win32"
 
+shared_paths = [
+	"/mingw64/share/xml",
+	"/mingw64/share/xsl"
+]
+
 # Script
 from subprocess import check_output
 import sys
@@ -40,10 +45,24 @@ def list_dependencies(executable):
         if not "/" in lib:
             continue
         yield lib
+        
+
+def create_runner(executable_name, script_file):
+    with open(script_file, "w") as f:
+        f.write("@echo off\r\n")
+        f.write("SET OME_HOME = %~dp0\\mingw64\r\n")
+        f.write("%~dp0\\" + executable_name + "\r\n")
 
 
 if not os.path.exists(package_path):
     os.mkdir(package_path)
+    
+# Copy shared paths
+for path in shared_paths:
+    if not os.path.exists(package_path + "/" + path):
+        shutil.copytree(cygpath(path), package_path + "/" + path)
+    
+# Copy applications	
 for app in applications:
     print("Packaging application " + app)
 
@@ -56,4 +75,8 @@ for app in applications:
         if os.path.exists(lib_path) and not os.path.exists(package_path + "/" + os.path.basename(lib_path)):
             print("Copying " + lib)
             shutil.copy(lib_path, package_path)
+            
+    # Create a runner *.bat (necessary for OME)
+    create_runner(app, package_path + "/" + os.path.splitext(app)[0] + ".bat")
+    
 
