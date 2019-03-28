@@ -38,6 +38,11 @@ BUILD_PLATFORM=$MSYS2_PLATFORM
 DEPENDENCY_CMAKE_BUILD_TYPE=Release
 MISAXX_CMAKE_BUILD_TYPE=Release
 
+# Static/shared builds
+SHARED_BUILD_DEPENDENCIES=ON
+SHARED_BUILD_OME=OFF
+SHARED_BUILD_MISAXX=ON
+
 # Installation prefix
 INSTALL_PREFIX=/mingw64/
 
@@ -65,7 +70,7 @@ cp /mingw64/bin/mingw32-make /mingw64/bin/make
 function dependency_cmake_build {
 	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
-	cmake -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
+	cmake -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_DEPENDENCIES -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
 	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
 	make install
 	popd
@@ -74,7 +79,7 @@ function dependency_cmake_build {
 function misaxx_cmake_build {
 	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
-	cmake -DCMAKE_BUILD_TYPE=$MISAXX_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
+	cmake -DCMAKE_BUILD_TYPE=$MISAXX_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_MISAXX -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
 	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
 	make install
 	popd
@@ -112,6 +117,15 @@ misaxx_cmake_build misaxx-imaging
 # Build OME Files & dependencies
 #
 
+function ome_dependency_cmake_build {
+	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
+	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
+	cmake -Ddoxygen=OFF -Drelocatable-install=ON -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_OME -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
+	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
+	make install
+	popd
+}
+
 download_if_not_exist $OME_COMMON_SOURCES ome-common-cpp-5.5.0
 download_if_not_exist $OME_MODEL_SOURCES ome-model-5.6.0
 if [ ! -e ome-files-cpp-0.5.0 ]; then
@@ -124,13 +138,13 @@ if [ ! -e ome-files-cpp-0.5.0 ]; then
 fi
 
 # OME Common
-dependency_cmake_build ome-common-cpp-5.5.0
+ome_dependency_cmake_build ome-common-cpp-5.5.0
 
 # OME Model
-dependency_cmake_build ome-model-5.6.0
+ome_dependency_cmake_build ome-model-5.6.0
 
 # OME Files
-dependency_cmake_build ome-files-cpp-0.5.0
+ome_dependency_cmake_build ome-files-cpp-0.5.0
 
 #
 # Build OpenCV Toolbox
