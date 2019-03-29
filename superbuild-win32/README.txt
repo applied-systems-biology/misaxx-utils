@@ -25,3 +25,10 @@ Compiles following MISA++ applications and libraries:
 Run `./package.sh` to extract the MISA++ applications from MSYS2 into a folder that
 contains all necessary dependencies.
 
+## Creating a ready-to-use Fiji package
+
+This requires you to install Maven (https://maven.apache.org/) and the Java Development Kit (https://java.com/).
+Maven must be added to the PATH. If this is not possible, change the `package-fiji.sh` script.
+
+* Make sure that ./package.py ran successfully
+* Run `./package-fiji.sh`
