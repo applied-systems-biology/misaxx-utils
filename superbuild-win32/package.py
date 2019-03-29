@@ -50,8 +50,8 @@ def list_dependencies(executable):
 def create_runner(executable_name, script_file):
     with open(script_file, "w") as f:
         f.write("@echo off\r\n")
-        f.write("SET OME_HOME = %~dp0\\mingw64\r\n")
-        f.write("%~dp0\\" + executable_name + "\r\n")
+        f.write("SET OME_HOME=%~dp0\\mingw64\r\n")
+        f.write("%~dp0\\" + executable_name + " %*\r\n")
 
 
 if not os.path.exists(package_path):
