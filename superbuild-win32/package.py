@@ -4,7 +4,8 @@
 applications = [
     "misaxx-analyzer.exe",
     "misaxx-tissue-segmentation.exe",
-    "misaxx-kidney-glomeruli-segmentation.exe"
+    "misaxx-kidney-glomeruli-segmentation.exe",
+    "misaxx-ome-visualizer.exe"
 ]
 package_path = "./package-win32"
 
@@ -15,7 +16,6 @@ shared_paths = [
 
 # Script
 from subprocess import check_output
-import sys
 import shutil
 import os
 

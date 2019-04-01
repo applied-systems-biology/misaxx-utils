@@ -39,9 +39,9 @@ DEPENDENCY_CMAKE_BUILD_TYPE=Release
 MISAXX_CMAKE_BUILD_TYPE=Release
 
 # Static/shared builds
-SHARED_BUILD_DEPENDENCIES=ON
+SHARED_BUILD_DEPENDENCIES=OFF
 SHARED_BUILD_OME=OFF
-SHARED_BUILD_MISAXX=ON
+SHARED_BUILD_MISAXX=OFF
 
 # Installation prefix
 INSTALL_PREFIX=/mingw64/
@@ -90,7 +90,7 @@ function download_if_not_exist {
 		if [ ! -e $2.zip ]; then
 			wget -O $2.zip $1 || { echo "Download of $1 failed" ; exit; }
         fi
-        unzip $2.zip || { echo "Extracting $2.zip failed" ; exit; }
+        unzip -o $2.zip || { echo "Extracting $2.zip failed" ; exit; }
     fi
 }
 

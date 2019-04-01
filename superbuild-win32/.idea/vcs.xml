@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/misa-imagej" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/misaxx-analyzer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/misaxx-core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/misaxx-imaging" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/misaxx-kidney-glomeruli" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/misaxx-ome" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/misaxx-ome-visualizer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/misaxx-tissue" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/opencv-toolbox" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/stack2ome" vcs="Git" />
+  </component>
+</project>
