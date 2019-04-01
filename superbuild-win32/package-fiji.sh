@@ -52,6 +52,7 @@ copy_dependency sqlite
 copy_dependency bcprov-jdk15on
 copy_dependency bcpkix-jdk15on
 copy_dependency icepdf
+copy_dependency commons-exec
 
 # Copy packages MISA++ modules
 rm -rvf ./Fiji.app/plugins/misa-modules
