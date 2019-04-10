@@ -16,12 +16,6 @@ MISAXX_KIDNEY_GLOMERULI_SOURCES="https://asb-git.hki-jena.de/RGerst/misaxx-kidne
 # JSON for Modern C++ sources
 NLOHMANN_JSON_SOURCES="https://github.com/nlohmann/json/archive/v3.6.1.zip"
 
-# OpenCV Toolbox sources
-OPENCV_TOOLBOX_SOURCES="https://asb-git.hki-jena.de/RGerst/opencv-toolbox.git"
-
-# LEMON Graph library sources
-LEMON_SOURCES="http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.zip"
-
 # OME sources
 OME_COMMON_SOURCES="https://downloads.openmicroscopy.org/ome-common-cpp/5.5.0/source/ome-common-cpp-5.5.0.zip"
 OME_MODEL_SOURCES="https://downloads.openmicroscopy.org/ome-model/5.6.0/source/ome-model-5.6.0.zip"
@@ -145,28 +139,6 @@ ome_dependency_cmake_build ome-model-5.6.0
 
 # OME Files
 ome_dependency_cmake_build ome-files-cpp-0.5.0
-
-#
-# Build OpenCV Toolbox
-#
-
-download_if_not_exist $OPENCV_TOOLBOX_SOURCES opencv-toolbox
-misaxx_cmake_build opencv-toolbox
-
-#
-# Build LEMON graph library
-#
-
-download_if_not_exist $LEMON_SOURCES lemon-1.3.1
-mkdir -p lemon-1.3.1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
-pushd lemon-1.3.1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
-	cmake -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
-	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
-	make install
-popd
-
-# Fix needed for libraries depending on LEMON
-cp $INSTALL_PREFIX/lib/liblemon.a $INSTALL_PREFIX/lib/lemon.lib
 
 #
 # Build MISA++ Tissue segmentation, Glomeruli segmentation
