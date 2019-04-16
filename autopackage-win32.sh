@@ -22,6 +22,7 @@ rm $OUTPUT_PLUGIN
 
 pushd superbuild-win32
     ./superbuild.sh || { echo 'Win32 superbuild failed' ; exit 1; }
+	./package.py || { echo 'Win32 package failed' ; exit 1; }
     ./package-fiji.sh || { echo 'Fiji package failed' ; exit 1; }
     pushd Fiji.app
         zip -r $OUTPUT_WIN32_FIJI .
