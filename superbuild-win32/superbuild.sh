@@ -1,17 +1,29 @@
 #!/bin/bash
 
+# /**
+# * Copyright by Ruman Gerst
+# * Research Group Applied Systems Biology - Head: Prof. Dr. Marc Thilo Figge
+# * https://www.leibniz-hki.de/en/applied-systems-biology.html
+# * HKI-Center for Systems Biology of Infection
+# * Leibniz Institute for Natural Product Research and Infection Biology - Hans Knöll Insitute (HKI)
+# * Adolf-Reichwein-Straße 23, 07745 Jena, Germany
+# *
+# * This code is licensed under BSD 2-Clause
+# * See the LICENSE file provided with this code for the full license.
+# */
+
 #
 # Settings
 #
 
 # MISA++ sources
-MISAXX_CORE_SOURCES="https://asb-git.hki-jena.de/RGerst/misaxx-core/-/archive/master/misaxx-core-master.zip"
-MISAXX_ANALYZER_SOURCES="https://asb-git.hki-jena.de/RGerst/misaxx-analyzer/-/archive/master/misaxx-analyzer-master.zip"
-MISAXX_IMAGING_SOURCES="https://asb-git.hki-jena.de/RGerst/misaxx-imaging/-/archive/master/misaxx-imaging-master.zip"
-MISAXX_OME_SOURCES="https://asb-git.hki-jena.de/RGerst/misaxx-ome/-/archive/master/misaxx-ome-master.zip"
-MISAXX_OME_VISUALIZER_SOURCES="https://asb-git.hki-jena.de/RGerst/misaxx-ome-visualizer/-/archive/master/misaxx-ome-visualizer-master.zip"
-MISAXX_TISSUE_SOURCES="https://asb-git.hki-jena.de/RGerst/misaxx-tissue/-/archive/master/misaxx-tissue-master.zip"
-MISAXX_KIDNEY_GLOMERULI_SOURCES="https://asb-git.hki-jena.de/RGerst/misaxx-kidney-glomeruli/-/archive/master/misaxx-kidney-glomeruli-master.zip"
+MISAXX_CORE_SOURCES="https://github.com/applied-systems-biology/misaxx-core/archive/master.zip"
+MISAXX_ANALYZER_SOURCES="https://github.com/applied-systems-biology/misaxx-analyzer/archive/master.zip"
+MISAXX_IMAGING_SOURCES="https://github.com/applied-systems-biology/misaxx-imaging/archive/master.zip"
+MISAXX_OME_SOURCES="https://github.com/applied-systems-biology/misaxx-ome/archive/master.zip"
+MISAXX_OME_VISUALIZER_SOURCES="https://github.com/applied-systems-biology/misaxx-ome-visualizer/archive/master.zip"
+MISAXX_TISSUE_SOURCES="https://github.com/applied-systems-biology/misaxx-tissue/archive/master.zip"
+MISAXX_KIDNEY_GLOMERULI_SOURCES="https://github.com/applied-systems-biology/misaxx-kidney-glomeruli/archive/master.zip"
 
 # JSON for Modern C++ sources
 NLOHMANN_JSON_SOURCES="https://github.com/nlohmann/json/archive/v3.6.1.zip"

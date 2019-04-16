@@ -1,7 +1,19 @@
 #!/bin/bash
 
+# /**
+# * Copyright by Ruman Gerst
+# * Research Group Applied Systems Biology - Head: Prof. Dr. Marc Thilo Figge
+# * https://www.leibniz-hki.de/en/applied-systems-biology.html
+# * HKI-Center for Systems Biology of Infection
+# * Leibniz Institute for Natural Product Research and Infection Biology - Hans Knöll Insitute (HKI)
+# * Adolf-Reichwein-Straße 23, 07745 Jena, Germany
+# *
+# * This code is licensed under BSD 2-Clause
+# * See the LICENSE file provided with this code for the full license.
+# */
+
 # Downloads
-MISA_IMAGEJ_SOURCES="https://asb-git.hki-jena.de/RGerst/misa-imagej/-/archive/master/misa-imagej-master.zip"
+MISA_IMAGEJ_SOURCES="https://github.com/applied-systems-biology/misa-imagej/archive/master.zip"
 MAVEN_DOWNLOAD="ftp://ftp.fu-berlin.de/unix/www/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip"
 FIJI_DOWNLOAD="https://downloads.imagej.net/fiji/latest/fiji-win64.zip"
 
