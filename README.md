@@ -7,10 +7,16 @@ Contains different variations of the MISA++ logo.
 # superbuild-win32
 
 Scripts that builds MISA++ on Windows.
+Only works in MSYS2.
 
 # package-fiji
 
 Script that creates a distribution of MISA++ for ImageJ
+
+# autopackage-win32.sh
+
+Creates a standalone Fiji package and Fiji-plugin package.
+Only works in MSYS2.
 
 # Copyright
 
