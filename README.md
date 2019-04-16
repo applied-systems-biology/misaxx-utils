@@ -8,6 +8,10 @@ Contains different variations of the MISA++ logo.
 
 Scripts that builds MISA++ on Windows.
 
+# package-fiji
+
+Script that creates a distribution of MISA++ for ImageJ
+
 # Copyright
 
 Copyright by Ruman Gerst

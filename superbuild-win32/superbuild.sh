@@ -111,13 +111,13 @@ dependency_cmake_build json-3.6.1
 # Build MISA++ Core, Analyzer, Imaging
 #
 
-download_if_not_exist $MISAXX_CORE_SOURCES misaxx-core
-download_if_not_exist $MISAXX_ANALYZER_SOURCES misaxx-analyzer
-download_if_not_exist $MISAXX_IMAGING_SOURCES misaxx-imaging
+download_if_not_exist $MISAXX_CORE_SOURCES misaxx-core-master
+download_if_not_exist $MISAXX_ANALYZER_SOURCES misaxx-analyzer-master
+download_if_not_exist $MISAXX_IMAGING_SOURCES misaxx-imaging-master
 
-misaxx_cmake_build misaxx-core
-misaxx_cmake_build misaxx-analyzer
-misaxx_cmake_build misaxx-imaging
+misaxx_cmake_build misaxx-core-master
+misaxx_cmake_build misaxx-analyzer-master
+misaxx_cmake_build misaxx-imaging-master
 
 #
 # Build OME Files & dependencies
@@ -156,12 +156,12 @@ ome_dependency_cmake_build ome-files-cpp-0.5.0
 # Build MISA++ Tissue segmentation, Glomeruli segmentation
 #
 
-download_if_not_exist $MISAXX_OME_SOURCES misaxx-core
-download_if_not_exist $MISAXX_OME_VISUALIZER_SOURCES misaxx-ome-visualizer
-download_if_not_exist $MISAXX_TISSUE_SOURCES misaxx-tissue
-download_if_not_exist $MISAXX_KIDNEY_GLOMERULI_SOURCES misaxx-kidney-glomeruli
+download_if_not_exist $MISAXX_OME_SOURCES misaxx-core-master
+download_if_not_exist $MISAXX_OME_VISUALIZER_SOURCES misaxx-ome-visualizer-master
+download_if_not_exist $MISAXX_TISSUE_SOURCES misaxx-tissue-master
+download_if_not_exist $MISAXX_KIDNEY_GLOMERULI_SOURCES misaxx-kidney-glomeruli-master
 
-misaxx_cmake_build misaxx-ome
-misaxx_cmake_build misaxx-ome-visualizer
-misaxx_cmake_build misaxx-tissue
-misaxx_cmake_build misaxx-kidney-glomeruli
+misaxx_cmake_build misaxx-ome-master
+misaxx_cmake_build misaxx-ome-visualizer-master
+misaxx_cmake_build misaxx-tissue-master
+misaxx_cmake_build misaxx-kidney-glomeruli-master

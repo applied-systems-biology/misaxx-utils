@@ -32,8 +32,8 @@ mv apache-maven-* apache-maven
 MAVEN_EXECUTABLE="$PWD/apache-maven/bin/mvn"
 
 # Download and extract MISA++ for ImageJ
-download_if_not_exist $MISA_IMAGEJ_SOURCES "misa-imagej"
-pushd misa-imagej
+download_if_not_exist $MISA_IMAGEJ_SOURCES "misa-imagej-master"
+pushd misa-imagej-master
 $MAVEN_EXECUTABLE package || { echo 'Building MISA++ for ImageJ failed' ; exit; }
 popd
 
@@ -41,16 +41,16 @@ popd
 download_if_not_exist $FIJI_DOWNLOAD Fiji.App
 
 # Install the MISA++ for ImageJ plugin
-cp ./misa-imagej/target/misa_imagej-*.jar ./Fiji.app/plugins/
+cp ./misa-imagej-master/target/misa_imagej-*.jar ./Fiji.app/plugins/
 
 # Download missing jfreesvg
-pushd ./misa-imagej/target/dependencies/
+pushd ./misa-imagej-master/target/dependencies/
 wget http://maven.imagej.net/content/groups/public/org/jfree/jfreesvg/3.3/jfreesvg-3.3.jar 
 popd
 
 # Copy necessary dependencies
 function copy_dependency {
-	cp -v ./misa-imagej/target/dependencies/$1*.jar ./Fiji.app/jars/
+	cp -v ./misa-imagej-master/target/dependencies/$1*.jar ./Fiji.app/jars/
 }
 
 copy_dependency autolink
