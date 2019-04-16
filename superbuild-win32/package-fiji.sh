@@ -20,7 +20,7 @@ FIJI_DOWNLOAD="https://downloads.imagej.net/fiji/latest/fiji-win64.zip"
 function download_if_not_exist {
     if [ ! -e $2 ]; then
 		if [ ! -e $2.zip ]; then
-			wget -O $2.zip $1 || { echo "Download of $1 failed" ; exit; }
+			wget --no-check-certificate -O $2.zip $1 || { echo "Download of $1 failed" ; exit; } # --no-check-certificate is needed because anti-viruses break the certificate chain
         fi
         unzip -o $2.zip || { echo "Extracting $2.zip failed" ; exit; }
     fi

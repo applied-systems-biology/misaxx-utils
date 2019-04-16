@@ -94,7 +94,7 @@ function misaxx_cmake_build {
 function download_if_not_exist {
     if [ ! -e $2 ]; then
 		if [ ! -e $2.zip ]; then
-			wget -O $2.zip $1 || { echo "Download of $1 failed" ; exit 1; }
+			wget --no-check-certificate -O $2.zip $1 || { echo "Download of $1 failed" ; exit 1; } # --no-check-certificate is needed because anti-viruses break the certificate chain
         fi
         unzip -o $2.zip || { echo "Extracting $2.zip failed" ; exit 1; }
     fi
