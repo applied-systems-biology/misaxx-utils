@@ -20,9 +20,9 @@ FIJI_DOWNLOAD="https://downloads.imagej.net/fiji/latest/fiji-win64.zip"
 function download_if_not_exist {
     if [ ! -e $2 ]; then
 		if [ ! -e $2.zip ]; then
-			wget -O $2.zip $1 || { echo "Download of $1 failed" ; exit; }
+			wget -O $2.zip $1 || { echo "Download of $1 failed" ; exit 1; }
         fi
-        unzip -o $2.zip || { echo "Extracting $2.zip failed" ; exit; }
+        unzip -o $2.zip || { echo "Extracting $2.zip failed" ; exit 1; }
     fi
 }
 
@@ -34,7 +34,7 @@ MAVEN_EXECUTABLE="$PWD/apache-maven/bin/mvn"
 # Download and extract MISA++ for ImageJ
 download_if_not_exist $MISA_IMAGEJ_SOURCES "misa-imagej-master"
 pushd misa-imagej-master
-$MAVEN_EXECUTABLE package || { echo 'Building MISA++ for ImageJ failed' ; exit; }
+$MAVEN_EXECUTABLE package || { echo 'Building MISA++ for ImageJ failed' ; exit 1; }
 popd
 
 # Create the target dir

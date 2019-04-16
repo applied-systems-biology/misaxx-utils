@@ -77,7 +77,7 @@ function dependency_cmake_build {
 	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	cmake -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_DEPENDENCIES -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
-	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
+	make -j$NUM_THREADS || { echo 'Build failed' ; exit 1; }
 	make install
 	popd
 }
@@ -86,7 +86,7 @@ function misaxx_cmake_build {
 	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	cmake -DCMAKE_BUILD_TYPE=$MISAXX_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_MISAXX -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
-	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
+	make -j$NUM_THREADS || { echo 'Build failed' ; exit 1; }
 	make install
 	popd
 }
@@ -94,9 +94,9 @@ function misaxx_cmake_build {
 function download_if_not_exist {
     if [ ! -e $2 ]; then
 		if [ ! -e $2.zip ]; then
-			wget -O $2.zip $1 || { echo "Download of $1 failed" ; exit; }
+			wget -O $2.zip $1 || { echo "Download of $1 failed" ; exit 1; }
         fi
-        unzip -o $2.zip || { echo "Extracting $2.zip failed" ; exit; }
+        unzip -o $2.zip || { echo "Extracting $2.zip failed" ; exit 1; }
     fi
 }
 
@@ -126,8 +126,8 @@ misaxx_cmake_build misaxx-imaging-master
 function ome_dependency_cmake_build {
 	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
-	cmake -Ddoxygen=OFF -Drelocatable-install=ON -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_OME -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit; }
-	make -j$NUM_THREADS || { echo 'Build failed' ; exit; }
+	cmake -Ddoxygen=OFF -Drelocatable-install=ON -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_OME -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit 1; }
+	make -j$NUM_THREADS || { echo 'Build failed' ; exit 1; }
 	make install
 	popd
 }

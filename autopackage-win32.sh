@@ -19,14 +19,14 @@ rm $OUTPUT_WIN32_FIJI
 rm $OUTPUT_PLUGIN
 
 pushd superbuild-win32
-    ./superbuild.sh || { echo 'Win32 superbuild failed' ; exit; }
-    ./package-fiji.sh || { echo 'Fiji package failed' ; exit; }
+    ./superbuild.sh || { echo 'Win32 superbuild failed' ; exit 1; }
+    ./package-fiji.sh || { echo 'Fiji package failed' ; exit 1; }
     pushd Fiji.app
         zip -r $OUTPUT_WIN32_FIJI .
     popd
 popd
 pushd package-fiji
-    ./package-fiji.sh || { echo 'Fiji plugin package failed' ; exit; }
+    ./package-fiji.sh || { echo 'Fiji plugin package failed' ; exit 1; }
     pushd misa-imagej-package
         zip -r $OUTPUT_PLUGIN .
     popd
