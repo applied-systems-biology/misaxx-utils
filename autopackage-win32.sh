@@ -15,6 +15,8 @@
 OUTPUT_WIN32_FIJI=$PWD/misa-imagej-fiji-standalone-win32.zip
 OUTPUT_PLUGIN=$PWD/misa-imagej-plugin.zip
 
+pacman -S --noconfirm --needed zip
+
 rm $OUTPUT_WIN32_FIJI
 rm $OUTPUT_PLUGIN
 
