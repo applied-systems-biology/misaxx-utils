@@ -65,6 +65,8 @@ copy_dependency bcprov-jdk15on
 copy_dependency bcpkix-jdk15on
 copy_dependency icepdf
 copy_dependency commons-exec
+copy_dependency xmlbeans
+copy_dependency commons-collections4
 
 # Copy packages MISA++ modules
 rm -rvf ./Fiji.app/plugins/misa-modules
