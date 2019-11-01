@@ -33,7 +33,12 @@ echo "* MISA++ OME" >> bin/README
 echo "* MISA++ Tissue" >> bin/README
 echo "* MISA++ Kidney Glomeruli" >> bin/README
 echo "" >> bin/README
-echo "To install the ImageJ plugin, copy the contents of the 'misa-imagej' folder into Fiji's plugin directory." >> bin/README
+echo "To install the ImageJ plugin, copy the contents of the 'misa-imagej' folder into the Fiji application directory." >> bin/README
+
+# Create zip package
+pushd bin
+zip -rv misaxx-linux-ubuntu-18.04.zip *
+popd
 
 # Change ownership back to the calling user
 if ! [ -z "$SUDO_USER" ]; then
@@ -41,3 +46,4 @@ if ! [ -z "$SUDO_USER" ]; then
 fi
 
 docker rm $CONTAINER_ID
+

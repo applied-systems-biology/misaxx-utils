@@ -155,24 +155,25 @@ RUN cp /misaxx-kidney-glomeruli/build/*.deb /results
 
 RUN cd misa-imagej && mvn compile && mvn package
 RUN cd misa-imagej/target/dependencies && wget --no-check-certificate "http://maven.imagej.net/content/groups/public/org/jfree/jfreesvg/3.3/jfreesvg-3.3.jar"
-RUN mkdir /results/misa-imagej
-RUN cp misa-imagej/target/misa_imagej-*.jar /results/misa-imagej
+RUN mkdir -p /results/misa-imagej/jars
+RUN mkdir -p /results/misa-imagej/plugins
+RUN cp misa-imagej/target/misa_imagej-*.jar /results/misa-imagej/plugins
 
 # Copy dependencies
-RUN cp misa-imagej/target/dependencies/autolink*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/flexmark*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/graphics2d*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/jfreesvg*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/openhtmltopdf*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/pdfbox*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/poi*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/sqlite*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/bcprov-jdk15on*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/bcpkix-jdk15on*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/icepdf*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/commons-exec*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/xmlbeans*.jar /results/misa-imagej \
-    && cp misa-imagej/target/dependencies/commons-collections4*.jar /results/misa-imagej
+RUN cp misa-imagej/target/dependencies/autolink*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/flexmark*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/graphics2d*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/jfreesvg*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/openhtmltopdf*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/pdfbox*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/poi*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/sqlite*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/bcprov-jdk15on*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/bcpkix-jdk15on*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/icepdf*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/commons-exec*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/xmlbeans*.jar /results/misa-imagej/jars \
+    && cp misa-imagej/target/dependencies/commons-collections4*.jar /results/misa-imagej/jars
 
 ## 
 # Package results
