@@ -15,9 +15,8 @@ https://applied-systems-biology.github.io/misa-framework/
 This repository contains additional helpers and tools related to MISA++.
 
 * `./logos` Contains different variations of the MISA++ logo.
-* `./superbuild-win32` Scripts that builds MISA++ on Windows. Only works in MSYS2.
-* `./package-fiji` Script that creates a distribution of MISA++ for ImageJ.
-* `./autopackage-win32.sh` Creates a standalone Fiji package and Fiji-plugin package. Only works in MSYS2.
+* `./windows-builds` Scripts that build MISA++ on Windows, as well as the Fiji package. Only works in MSYS2.
+* `./linux-builds` Scripts that build MISA++ Linux packages via Docker
 
 # Copyright
 
