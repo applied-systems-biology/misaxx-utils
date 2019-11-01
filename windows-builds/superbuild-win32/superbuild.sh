@@ -73,6 +73,10 @@ mingw-w64-$MSYS2_PLATFORM-python2
 # Make compiling easier
 cp /mingw64/bin/mingw32-make /mingw64/bin/make
 
+# Python3 is default, but OME expects Python2
+rm /mingw64/bin/python
+cp /mingw64/bin/python2 /mingw64/bin/python
+
 function dependency_cmake_build {
 	mkdir -p $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 	pushd $1/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
