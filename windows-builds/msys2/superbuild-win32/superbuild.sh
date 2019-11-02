@@ -37,7 +37,7 @@ OME_FILES_SOURCES="https://downloads.openmicroscopy.org/ome-files-cpp/0.5.0/sour
 MSYS2_PLATFORM=x86_64
 
 # Number of threads for make
-NUM_THREADS=4
+NUM_THREADS=1
 
 # CMake build types
 BUILD_PLATFORM=$MSYS2_PLATFORM
@@ -57,9 +57,9 @@ INSTALL_PREFIX=/mingw64/
 #
 
 pacman -S --noconfirm --needed unzip mingw-w64-$MSYS2_PLATFORM-cmake \
+patch \
 wget \
-mingw-w64-$MSYS2_PLATFORM-toolchain \
-mingw-w64-$MSYS2_PLATFORM-boost \
+mingw-w64-$MSYS2_PLATFORM-toolchain 
 mingw-w64-$MSYS2_PLATFORM-make \
 libsqlite \
 libsqlite-devel \
@@ -103,6 +103,17 @@ function download_if_not_exist {
         unzip -o $2.zip || { echo "Extracting $2.zip failed" ; exit 1; }
     fi
 }
+
+#
+# Boost
+#
+
+download_if_not_exist "https://github.com/msys2/MINGW-packages/archive/fff2fc0d53aa95b85cee0c785e56159b0565ea72.zip" MINGW-packages-fff2fc0d53aa95b85cee0c785e56159b0565ea72
+pushd MINGW-packages-fff2fc0d53aa95b85cee0c785e56159b0565ea72
+pushd mingw-w64-boost
+makepkg --noconfirm -si
+popd
+popd
 
 #
 # JSON for Modern C++
