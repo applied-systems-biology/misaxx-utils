@@ -6,7 +6,7 @@ if [[ $UID != 0 ]]; then
     exit 1
 fi
 
-IMAGE_NAME="ome-build/eoan"
+IMAGE_NAME="ome-build/bionic"
 docker build -t $IMAGE_NAME .
 CONTAINER_ID=$(docker create $IMAGE_NAME)
 
