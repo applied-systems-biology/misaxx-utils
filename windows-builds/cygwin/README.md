@@ -31,7 +31,7 @@ permissions.
 ### A download fails
 
 We cannot prevent URLs from invalidating if software authors change servers.
-Please update the URLs to the new location if such issues arise.Cygwin Package Information
+Please update the URLs to the new location if such issues arise.
 
 ## Cygwin packages
 
