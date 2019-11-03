@@ -35,6 +35,15 @@ Please update the URLs to the new location if such issues arise.Cygwin Package I
 
 ## Cygwin packages
 
+You can find a list of all Cygwin packages below.
+Execute the Cygwin setup with following parameter to pre-select packages in the list:
+
+```
+./setup-x86_64.exe -P _autorebase,adwaita-icon-theme,alternatives,at-spi2-core,autoconf,autoconf2.1,autoconf2.5,automake,automake1.10,automake1.11,automake1.12,automake1.13,automake1.14,automake1.15,automake1.16,automake1.9,base-cygwin,base-files,bash,binutils,boost-build,bzip2,ca-certificates,clang,cmake,compiler-rt,coreutils,crypto-policies,cygutils,cygwin,cygwin-devel,dash,dconf-service,dejavu-fonts,desktop-file-utils,diffutils,dri-drivers,editrights,file,findutils,gamin,gawk,gcc-core,gcc-g++,gdb,gdk-pixbuf2.0-svg,getent,glib2.0-networking,grep,groff,gsettings-desktop-schemas,gtk-update-icon-cache,gzip,hicolor-icon-theme,hostname,info,ipc-utils,iso-codes,less,libarchive13,libargp,libatk-bridge2.0_0,libatk1.0_0,libatomic1,libatspi0,libattr1,libblkid1,libboost-devel,libboost_atomic1.66,libboost_chrono1.66,libboost_container1.66,libboost_context1.66,libboost_coroutine1.66,libboost_date_time1.66,libboost_filesystem1.66,libboost_graph1.66,libboost_iostreams1.66,libboost_locale1.66,libboost_log1.66,libboost_math1.66,libboost_program_options1.66,libboost_random1.66,libboost_regex1.66,libboost_serialization1.66,libboost_signals1.66,libboost_stacktrace1.66,libboost_system1.66,libboost_test1.66,libboost_thread1.66,libboost_timer1.66,libboost_type_erasure1.66,libboost_wave1.66,libbrotlicommon1,libbrotlidec1,libbz2_1,libc++-devel,libc++1,libc++abi-devel,libc++abi1,libcairo2,libclang8,libcom_err2,libcroco0.6_3,libcrypt0,libcrypt2,libcurl4,libdatrie1,libdb5.3,libdbus1_3,libedit0,libepoxy0,libexpat1,libfam0,libfdisk1,libffi6,libfontconfig-common,libfontconfig1,libfreetype6,libgc1,libgcc1,libgdbm4,libgdbm6,libgdbm_compat4,libgdk_pixbuf2.0_0,libGL1,libglapi0,libglib2.0_0,libgmp10,libgnutls30,libgomp1,libgraphite2_3,libgssapi_krb5_2,libgstinterfaces1.0_0,libgstreamer1.0_0,libgtk3_0,libguile2.0_22,libharfbuzz0,libhdf5_10,libhogweed4,libhwloc15,libiconv,libiconv2,libicu-devel,libicu61,libicu65,libidn2_0,libilmbase12,libIlmImf22,libintl8,libisl15,libjasper4,libjbig2,libjpeg8,libjson-glib1.0_0,libjsoncpp19,libk5crypto3,libkrb5_3,libkrb5support0,libllvm8,libltdl7,liblz4_1,liblzma5,liblzo2_2,libmpc3,libmpfr6,libncursesw10,libnettle6,libnghttp2_14,libnsl2,libOpenCL1,libopencv-devel,libopencv3.2,libopenldap2_4_2,liborc0.4_0,libp11-kit0,libpango1.0_0,libpcre1,libpipeline1,libpixman1_0,libpkgconf3,libpng16,libpng16-devel,libpocl-common,libpocl2,libpolly8,libpopt-common,libpopt0,libproxy1,libpsl5,libquadmath0,libreadline7,librest0.7_0,librhash0,librsvg2_2,libsasl2_3,libsigsegv2,libsmartcols1,libsoup-gnome2.4_1,libsoup2.4_1,libsqlite3-devel,libsqlite3_0,libssh-common,libssh4,libssl1.0,libssl1.1,libstdc++6,libtasn1_6,libthai0,libtiff-devel,libtiff6,libtirpc-common,libtirpc3,libunistring2,libunwind-devel,libunwind1,libuuid-devel,libuuid1,libuv1,libwebp5,libwebp7,libX11-xcb1,libX11_6,libXau6,libxcb-glx0,libxcb-render0,libxcb-shm0,libxcb1,libXcomposite1,libXcursor1,libXdamage1,libXdmcp6,libxerces-c-devel,libxerces-c31,libXext6,libXfixes3,libXft2,libXi6,libXinerama1,libxml2,libXrandr2,libXrender1,libXtst6,login,m4,make,man-db,mintty,ncurses,opencv,openssl,p11-kit,p11-kit-trust,patch,perl,perl-Test-Harness,perl-Unicode-Normalize,perl_autorebase,perl_base,pkg-config,pkgconf,publicsuffix-list-dafsa,python-pip-wheel,python-setuptools-wheel,python2,python27,python3,python36,rebase,run,sed,shared-mime-info,sqlite3,sqlite3-vfslog,tar,terminfo,terminfo-extra,texinfo,tzcode,tzdata,unzip,util-linux,vim-minimal,w32api-headers,w32api-runtime,wget,which,windows-default-manifest,xz,zip,zlib-devel,zlib0
+
+```
+
+```
 Package                      Version
 _autorebase                  001007-1
 adwaita-icon-theme           3.26.1-1
@@ -327,3 +336,4 @@ xz                           5.2.4-1
 zip                          3.0-12
 zlib-devel                   1.2.11-1
 zlib0                        1.2.11-1
+```framework
