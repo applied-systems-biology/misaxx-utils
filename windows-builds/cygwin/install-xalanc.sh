@@ -17,7 +17,7 @@ export DESTDIR=/.
 pushd xalan-c-1.11/c/
 rm config.guess
 cp /usr/share/automake-1.16/config.guess .
-./runConfigure -p cygwin -c gcc -x g++ -b 64 -P $PWD/bin
+./runConfigure -p cygwin -c gcc -x g++ -b 64 -P /usr
 make clean
 make
 make install
