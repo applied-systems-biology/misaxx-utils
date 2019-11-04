@@ -46,9 +46,13 @@ For example:
 download_if_not_exist http://apache.mirror.digionline.de/xalan/xalan-c/sources/xalan_c-1.11-src.zip xalan_c
 ```
 In this case download `http://apache.mirror.digionline.de/xalan/xalan-c/sources/xalan_c-1.11-src.zip` manually and rename it 
-to `xalan_c`.
+to `xalan_c`. The build scripts will not attempt to download the zip file and extract them instead.
 
 **Important: ./build-misa-imagej.sh contains an additional download for a missing dependency library that should be placed in ./misa-imagej-master/target/dependencies**
+
+## Zip error
+
+In case of a corrupted zip file, remove it and re-run the build script. See other common problems if the download itself does not work.
 
 ## Cygwin packages
 
