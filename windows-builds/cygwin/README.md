@@ -28,10 +28,27 @@ permissions for *.bat files.
 Please **copy** the folder to some other location to fix the filesystem 
 permissions.
 
-### A download fails
+### Downloads fail due to wrong URL
 
 We cannot prevent URLs from invalidating if software authors change servers.
 Please update the URLs to the new location if such issues arise.
+
+### Downloads fail due to SSL/GnuTLS issues
+
+This can happen if the virus scanner interferes with the downloading process or in some non-root Cygwin-installations.
+A workaround is to download all necessary files manually in a browser and renaming them accordingly.
+
+To do this, open all `install-*` and `build-*` scripts and search for the `download_if_not_exist` lines. This function takes
+the URL as first argument and the name of the \*.zip file as second argument.
+
+For example: 
+```bash
+download_if_not_exist http://apache.mirror.digionline.de/xalan/xalan-c/sources/xalan_c-1.11-src.zip xalan_c
+```
+In this case download `http://apache.mirror.digionline.de/xalan/xalan-c/sources/xalan_c-1.11-src.zip` manually and rename it 
+to `xalan_c`.
+
+**Important: ./build-misa-imagej.sh contains an additional download for a missing dependency library that should be placed in ./misa-imagej-master/target/dependencies**
 
 ## Cygwin packages
 
