@@ -3,7 +3,11 @@
 # Build & install dependencies
 ./install-cmake.sh || { echo 'Build failed' ; exit 1; }
 ./install-nlohmann-json.sh || { echo 'Build failed' ; exit 1; }
+./install-opencv.sh || { echo 'Build failed' ; exit 1; }
+./install-xercesc.sh || { echo 'Build failed' ; exit 1; }
 ./install-xalanc.sh || { echo 'Build failed' ; exit 1; }
+./install-boost.sh || { echo 'Build failed' ; exit 1; }
+./install-sqlite3.sh || { echo 'Build failed' ; exit 1; }
 ./install-ome-common.sh || { echo 'Build failed' ; exit 1; }
 ./install-ome-model.sh || { echo 'Build failed' ; exit 1; }
 ./install-ome-files.sh || { echo 'Build failed' ; exit 1; }

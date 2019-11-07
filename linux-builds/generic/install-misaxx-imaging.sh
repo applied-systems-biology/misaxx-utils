@@ -4,7 +4,7 @@ MISAXX_IMAGING_SOURCES="https://github.com/applied-systems-biology/misaxx-imagin
 
 source ./commons.sh
 
-download_if_not_exist $MISAXX_IMAGING_SOURCES misaxx-imaging-master
+download_zip_if_not_exist $MISAXX_IMAGING_SOURCES misaxx-imaging-master
 
 mkdir -p misaxx-imaging-master/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 pushd misaxx-imaging-master/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM

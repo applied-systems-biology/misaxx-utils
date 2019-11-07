@@ -5,6 +5,10 @@ INSTALL_PREFIX=$PWD/usr
 # Number of threads for make
 NUM_THREADS=4
 
+# Python executable needed for OME building
+# Used as input for /usr/bin/env
+PYTHON_ENV=python2
+
 # CMake build types
 BUILD_PLATFORM=x86_64
 DEPENDENCY_CMAKE_BUILD_TYPE=Release
@@ -17,7 +21,9 @@ SHARED_BUILD_MISAXX=OFF
 
 # Setup environment
 mkdir -p $INSTALL_PREFIX/bin
-PATH=$INSTALL_PREFIX/bin:$PATH
+export PATH=$INSTALL_PREFIX/bin:$PATH
+export LD_LIBRARY_PATH=$INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
+export CMAKE_PREFIX_PATH=$INSTALL_PREFIX
 
 
 function download_zip_if_not_exist {

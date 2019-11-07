@@ -4,7 +4,7 @@ MISAXX_CORE_SOURCES="https://github.com/applied-systems-biology/misaxx-core/arch
 
 source ./commons.sh
 
-download_if_not_exist $MISAXX_CORE_SOURCES misaxx-core-master
+download_zip_if_not_exist $MISAXX_CORE_SOURCES misaxx-core-master
 
 mkdir -p misaxx-core-master/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 pushd misaxx-core-master/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM

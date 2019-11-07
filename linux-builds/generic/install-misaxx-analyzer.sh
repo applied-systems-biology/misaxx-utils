@@ -4,7 +4,7 @@ MISAXX_ANALYZER_SOURCES="https://github.com/applied-systems-biology/misaxx-analy
 
 source ./commons.sh
 
-download_if_not_exist $MISAXX_ANALYZER_SOURCES misaxx-analyzer-master
+download_zip_if_not_exist $MISAXX_ANALYZER_SOURCES misaxx-analyzer-master
 
 mkdir -p misaxx-analyzer-master/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 pushd misaxx-analyzer-master/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM

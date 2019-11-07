@@ -11,8 +11,16 @@ extract the Docker build commands for your system.
 * libcurl and development files
 * libtiff and development files
 * libpng and development files
+* GNU automake 1.16
+* Python 2
+* ZLib and development files
 
 ## Building
 
 Run `./build.sh` to start the build process.
 Then run `./package.sh` to create the MISA++ for ImageJ package.
+
+## Running MISA++
+
+You can find starter scripts for the C++ applications in `./misaxx-starters`. 
+The `./misax-imagej` folder contains the MISA++ for ImageJ plugin.
