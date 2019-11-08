@@ -24,6 +24,7 @@ mkdir -p $INSTALL_PREFIX/bin
 export PATH=$INSTALL_PREFIX/bin:$PATH
 export LD_LIBRARY_PATH=$INSTALL_PREFIX/lib64:$INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
 export CMAKE_PREFIX_PATH=$INSTALL_PREFIX
+export CPATH=$INSTALL_PREFIX/include/
 
 
 function download_zip_if_not_exist {
