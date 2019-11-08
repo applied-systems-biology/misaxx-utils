@@ -7,7 +7,7 @@ source ./commons.sh
 download_targz_if_not_exist $XALANC_SOURCES xalan-c-1.11
 
 # Set environment variables
-export XERCESCROOT=$INSTALL_PREFIX/include
+export XERCESCROOT=$INSTALL_PREFIX
 export XALANCROOT=$PWD/xalan-c-1.11/c/
 
 AUTOMAKE_CONFIG=$(automake --print-libdir)/config.guess
