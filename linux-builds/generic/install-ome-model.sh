@@ -45,7 +45,7 @@ popd
 
 mkdir -p ome-model-5.6.0/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
 pushd ome-model-5.6.0/build-$MISAXX_CMAKE_BUILD_TYPE-$BUILD_PLATFORM
-cmake -Ddoxygen=OFF -Drelocatable-install=ON -DXalanC_LIBRARY=$INSTALL_PREFIX/lib/libxalan-c.so -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_OME -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit 1; }
+cmake -Ddoxygen=OFF -Drelocatable-install=ON -DCMAKE_BUILD_TYPE=$DEPENDENCY_CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$SHARED_BUILD_OME -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -G "Unix Makefiles" .. || { echo 'Build configuration failed' ; exit 1; }
 make -j$NUM_THREADS || { echo 'Build failed' ; exit 1; }
 make install
 popd

@@ -18,7 +18,7 @@ for executable in "${MISA_EXECUTABLES[@]}"; do
     cat > ./misaxx-starters/${executable}.sh << EOF
 #!/bin/bash
 export PATH=$INSTALL_PREFIX/bin:\$PATH
-export LD_LIBRARY_PATH=$INSTALL_PREFIX/lib:\$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$INSTALL_PREFIX/lib64:$INSTALL_PREFIX/lib:\$LD_LIBRARY_PATH
 
 $executable "\$@"
 EOF

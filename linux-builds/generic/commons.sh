@@ -3,7 +3,7 @@
 INSTALL_PREFIX=$PWD/usr
 
 # Number of threads for make
-NUM_THREADS=16
+NUM_THREADS=30
 
 # Python executable needed for OME building
 # Used as input for /usr/bin/env
@@ -23,6 +23,7 @@ SHARED_BUILD_MISAXX=OFF
 mkdir -p $INSTALL_PREFIX/bin
 export PATH=$INSTALL_PREFIX/bin:$PATH
 export LD_LIBRARY_PATH=$INSTALL_PREFIX/lib64:$INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$INSTALL_PREFIX/lib64:$INSTALL_PREFIX/lib:$LIBRARY_PATH
 export CMAKE_PREFIX_PATH=$INSTALL_PREFIX
 export CPATH=$INSTALL_PREFIX/include/
 
