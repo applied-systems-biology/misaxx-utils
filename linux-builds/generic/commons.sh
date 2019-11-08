@@ -3,7 +3,7 @@
 INSTALL_PREFIX=$PWD/usr
 
 # Number of threads for make
-NUM_THREADS=30
+NUM_THREADS=4
 
 # Enable or disable OpenCV threading functionality (e.g. IPP, OpenCV), ON or OFF
 OPENCV_ENABLE_THREADING=ON
