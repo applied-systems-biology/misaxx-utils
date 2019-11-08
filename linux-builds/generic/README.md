@@ -11,7 +11,7 @@ extract the Docker build commands for your system.
 * libcurl and development files
 * libtiff and development files
 * libpng and development files
-* GNU automake 1.16
+* GNU automake
 * Python 2
 * ZLib and development files
 
