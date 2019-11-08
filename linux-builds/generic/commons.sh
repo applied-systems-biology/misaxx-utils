@@ -3,7 +3,7 @@
 INSTALL_PREFIX=$PWD/usr
 
 # Number of threads for make
-NUM_THREADS=4
+NUM_THREADS=16
 
 # Python executable needed for OME building
 # Used as input for /usr/bin/env
