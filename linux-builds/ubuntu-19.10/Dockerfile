@@ -43,14 +43,14 @@ RUN unzip /ome-model-5.6.0.zip
 RUN wget --no-check-certificate "https://downloads.openmicroscopy.org/ome-files-cpp/0.5.0/source/ome-files-cpp-0.5.0.zip" -O /ome-files-cpp-0.5.0.zip
 RUN unzip /ome-files-cpp-0.5.0.zip
 
-RUN git clone https://github.com/applied-systems-biology/misaxx-core.git
-RUN git clone https://github.com/applied-systems-biology/misaxx-imaging.git
-RUN git clone https://github.com/applied-systems-biology/misaxx-ome.git
-RUN git clone https://github.com/applied-systems-biology/misaxx-ome-visualizer.git
-RUN git clone https://github.com/applied-systems-biology/misaxx-tissue.git
-RUN git clone https://github.com/applied-systems-biology/misaxx-kidney-glomeruli.git
-RUN git clone https://github.com/applied-systems-biology/misaxx-analyzer.git
-RUN git clone https://github.com/applied-systems-biology/misa-imagej.git
+RUN git clone https://github.com/applied-systems-biology/misaxx-core.git && cd misaxx-core && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-imaging.git && cd misaxx-imaging && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-ome.git && cd misaxx-ome && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-ome-visualizer.git && cd misaxx-ome-visualizer && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-tissue.git && cd misaxx-tissue && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-kidney-glomeruli.git && cd misaxx-kidney-glomeruli && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-analyzer.git && cd misaxx-analyzer && git pull
+RUN git clone https://github.com/applied-systems-biology/misa-imagej.git && cd misa-imagej && git pull
 
 ##
 # Setup output directory that contains the *.deb files
@@ -79,7 +79,7 @@ RUN cd json-3.7.0/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREF
 RUN mkdir ome-common-cpp-5.5.0/build
 COPY ome-common-cpack.cmake /ome-common-cpp-5.5.0/ome-common-cpack.cmake
 RUN cd ome-common-cpp-5.5.0 && cat ome-common-cpack.cmake >> CMakeLists.txt
-RUN cd ome-common-cpp-5.5.0/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd ome-common-cpp-5.5.0/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd ome-common-cpp-5.5.0/build && cpack
 RUN dpkg -i /ome-common-cpp-5.5.0/build/*.deb
 RUN cp /ome-common-cpp-5.5.0/build/*.deb /results
@@ -88,7 +88,7 @@ RUN cp /ome-common-cpp-5.5.0/build/*.deb /results
 RUN mkdir ome-model-5.6.0/build
 COPY ome-model-cpack.cmake /ome-model-5.6.0/ome-model-cpack.cmake
 RUN cd ome-model-5.6.0 && cat ome-model-cpack.cmake >> CMakeLists.txt
-RUN cd ome-model-5.6.0/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd ome-model-5.6.0/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd ome-model-5.6.0/build && cpack
 RUN dpkg -i /ome-model-5.6.0/build/*.deb
 RUN cp /ome-model-5.6.0/build/*.deb /results
@@ -98,7 +98,7 @@ RUN mkdir ome-files-cpp-0.5.0/build
 COPY ome-files-cpack.cmake /ome-files-cpp-0.5.0/ome-files-cpack.cmake
 RUN cd ome-files-cpp-0.5.0 && sed -i "s/return()/#return()/g" CMakeLists.txt
 RUN cd ome-files-cpp-0.5.0 && cat ome-files-cpack.cmake >> CMakeLists.txt
-RUN cd ome-files-cpp-0.5.0/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd ome-files-cpp-0.5.0/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd ome-files-cpp-0.5.0/build && cpack
 RUN dpkg -i /ome-files-cpp-0.5.0/build/*.deb
 RUN cp /ome-files-cpp-0.5.0/build/*.deb /results
@@ -108,43 +108,43 @@ RUN cp /ome-files-cpp-0.5.0/build/*.deb /results
 ##
 
 RUN mkdir misaxx-core/build
-RUN cd misaxx-core/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-core/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd misaxx-core/build && cpack
 RUN dpkg -i /misaxx-core/build/*.deb
 RUN cp /misaxx-core/build/*.deb /results
 
 RUN mkdir misaxx-analyzer/build
-RUN cd misaxx-analyzer/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-analyzer/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd misaxx-analyzer/build && cpack
 RUN dpkg -i /misaxx-analyzer/build/*.deb
 RUN cp /misaxx-analyzer/build/*.deb /results
 
 RUN mkdir misaxx-imaging/build
-RUN cd misaxx-imaging/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-imaging/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd misaxx-imaging/build && cpack
 RUN dpkg -i /misaxx-imaging/build/*.deb
 RUN cp /misaxx-imaging/build/*.deb /results
 
 RUN mkdir misaxx-ome/build
-RUN cd misaxx-ome/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-ome/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd misaxx-ome/build && cpack
 RUN dpkg -i /misaxx-ome/build/*.deb
 RUN cp /misaxx-ome/build/*.deb /results
 
 RUN mkdir misaxx-ome-visualizer/build
-RUN cd misaxx-ome-visualizer/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-ome-visualizer/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd misaxx-ome-visualizer/build && cpack
 RUN dpkg -i /misaxx-ome-visualizer/build/*.deb
 RUN cp /misaxx-ome-visualizer/build/*.deb /results
 
 RUN mkdir misaxx-tissue/build
-RUN cd misaxx-tissue/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-tissue/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd misaxx-tissue/build && cpack
 RUN dpkg -i /misaxx-tissue/build/*.deb
 RUN cp /misaxx-tissue/build/*.deb /results
 
 RUN mkdir misaxx-kidney-glomeruli/build
-RUN cd misaxx-kidney-glomeruli/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-kidney-glomeruli/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
 RUN cd misaxx-kidney-glomeruli/build && cpack
 RUN dpkg -i /misaxx-kidney-glomeruli/build/*.deb
 RUN cp /misaxx-kidney-glomeruli/build/*.deb /results
