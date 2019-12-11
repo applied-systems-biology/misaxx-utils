@@ -18,6 +18,9 @@
 
 # Build & install MISA++ example components
 ./install-misaxx-imaging.sh || { echo 'Build failed' ; exit 1; }
+./install-misaxx-microbench.sh || { echo 'Build failed' ; exit 1; }
+./install-misaxx-deconvolve.sh || { echo 'Build failed' ; exit 1; }
+./install-misaxx-segment-cells.sh || { echo 'Build failed' ; exit 1; }
 ./install-misaxx-ome.sh || { echo 'Build failed' ; exit 1; }
 ./install-misaxx-ome-visualizer.sh || { echo 'Build failed' ; exit 1; }
 ./install-misaxx-tissue.sh || { echo 'Build failed' ; exit 1; }

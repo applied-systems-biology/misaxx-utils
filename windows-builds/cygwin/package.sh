@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FIJI_DOWNLOAD="https://downloads.imagej.net/fiji/latest/fiji-win64.zip"
-MISA_EXECUTABLES=(misaxx-analyzer misaxx-ome-visualizer misaxx-tissue-segmentation misaxx-kidney-glomeruli-segmentation)
+MISA_EXECUTABLES=(misaxx-analyzer misaxx-ome-visualizer misaxx-tissue-segmentation misaxx-kidney-glomeruli-segmentation misaxx-microbench misaxx-deconvolve misaxx-segment-cells)
 
 source ./commons.sh
 

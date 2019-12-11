@@ -45,6 +45,9 @@ RUN unzip /ome-files-cpp-0.5.0.zip
 
 RUN git clone https://github.com/applied-systems-biology/misaxx-core.git && cd misaxx-core && git pull
 RUN git clone https://github.com/applied-systems-biology/misaxx-imaging.git && cd misaxx-imaging && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-microbench.git && cd misaxx-microbench && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-deconvolve.git && cd misaxx-deconvolve && git pull
+RUN git clone https://github.com/applied-systems-biology/misaxx-segment-cells.git && cd misaxx-segment-cells && git pull
 RUN git clone https://github.com/applied-systems-biology/misaxx-ome.git && cd misaxx-ome && git pull
 RUN git clone https://github.com/applied-systems-biology/misaxx-ome-visualizer.git && cd misaxx-ome-visualizer && git pull
 RUN git clone https://github.com/applied-systems-biology/misaxx-tissue.git && cd misaxx-tissue && git pull
@@ -124,6 +127,24 @@ RUN cd misaxx-imaging/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=R
 RUN cd misaxx-imaging/build && cpack
 RUN dpkg -i /misaxx-imaging/build/*.deb
 RUN cp /misaxx-imaging/build/*.deb /results
+
+RUN mkdir misaxx-microbench/build
+RUN cd misaxx-microbench/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-microbench/build && cpack
+RUN dpkg -i /misaxx-microbench/build/*.deb
+RUN cp /misaxx-microbench/build/*.deb /results
+
+RUN mkdir misaxx-deconvolve/build
+RUN cd misaxx-deconvolve/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-deconvolve/build && cpack
+RUN dpkg -i /misaxx-deconvolve/build/*.deb
+RUN cp /misaxx-deconvolve/build/*.deb /results
+
+RUN mkdir misaxx-segment-cells/build
+RUN cd misaxx-segment-cells/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
+RUN cd misaxx-segment-cells/build && cpack
+RUN dpkg -i /misaxx-segment-cells/build/*.deb
+RUN cp /misaxx-segment-cells/build/*.deb /results
 
 RUN mkdir misaxx-ome/build
 RUN cd misaxx-ome/build && cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make -j4
