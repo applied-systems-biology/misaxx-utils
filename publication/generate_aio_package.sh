@@ -76,4 +76,4 @@ cp ../_README.md ./README.md
 cp ../LICENSE.txt .
 
 # Package everything together
-zip ../misaxx-$MISAXX_VERSION-sources-bin-aio.zip ./*
+zip -r ../misaxx-$MISAXX_VERSION-sources-bin-aio.zip ./*
