@@ -2,10 +2,10 @@
 
 export MISAXX_VERSION=1.0.0.1
 
-rm -rf misaxx-sources-bin-aio
-mkdir misaxx-sources-bin-aio
+rm -rf misaxx-sources-aio
+mkdir misaxx-sources-aio
 
-pushd misaxx-sources-bin-aio
+pushd misaxx-sources-aio
 
 # Download sources
 git clone https://github.com/applied-systems-biology/misaxx-softwarex-code.git all-sources
