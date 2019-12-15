@@ -72,7 +72,7 @@ rm misaxx_microbench_example_data.zip
 
 # Copy README
 
-cp ../_README.md ./README.md
+cp ../sources_bin_README.md ./README.md
 cp ../LICENSE.txt .
 
 # Package everything together
